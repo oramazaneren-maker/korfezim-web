@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 15% 18%;
+    --foreground: 220 10% 90%;
+
+    --card: 220 15% 22%;
+    --card-foreground: 220 10% 90%;
+
+    --popover: 220 15% 22%;
+    --popover-foreground: 220 10% 90%;
+
+    --primary: 0 75% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 12% 26%;
+    --secondary-foreground: 220 10% 80%;
+
+    --muted: 220 12% 28%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 0 75% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 12% 30%;
+    --input: 220 12% 30%;
+    --ring: 0 75% 50%;
+
+    --radius: 0.5rem;
+
+    --crimson: 0 75% 50%;
+    --crimson-dark: 0 70% 40%;
+    --crimson-glow: 0 90% 55%;
+    --steel: 215 10% 55%;
+    --steel-light: 215 8% 45%;
+    --navy-deep: 220 15% 16%;
+    --charcoal: 220 15% 20%;
+    --slate-mid: 220 12% 30%;
+
+    --sidebar-background: 220 15% 20%;
+    --sidebar-foreground: 220 10% 80%;
+    --sidebar-primary: 0 75% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 12% 26%;
+    --sidebar-accent-foreground: 220 10% 80%;
+    --sidebar-border: 220 12% 28%;
+    --sidebar-ring: 0 75% 50%;
+
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+  }
+}
+
+@layer utilities {
+  .text-glow-red {
+    text-shadow: 0 0 20px hsl(var(--crimson-glow) / 0.4), 0 0 40px hsl(var(--crimson-glow) / 0.15);
+  }
+
+  .box-glow-red {
+    box-shadow: 0 0 20px hsl(var(--crimson) / 0.12), 0 0 40px hsl(var(--crimson) / 0.06);
+  }
+
+  .box-glow-subtle {
+    box-shadow: 0 4px 20px hsl(0 0% 0% / 0.08), 0 1px 3px hsl(0 0% 0% / 0.06);
+  }
+
+  .gradient-dark {
+    background: linear-gradient(180deg, hsl(var(--navy-deep)) 0%, hsl(var(--charcoal)) 50%, hsl(var(--navy-deep)) 100%);
+  }
+
+  .gradient-card-dark {
+    background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
+  }
+
+  .gradient-hero-overlay {
+    background: linear-gradient(180deg, hsl(220 15% 18% / 0.4) 0%, hsl(220 15% 18% / 0.65) 40%, hsl(220 15% 18% / 0.88) 100%);
+  }
+
+  .energy-line-red {
+    background: linear-gradient(90deg, transparent, hsl(var(--crimson)), transparent);
+    height: 2px;
+  }
+
+  .metallic-text {
+    background: linear-gradient(135deg, hsl(220 10% 75%), hsl(220 8% 85%), hsl(220 10% 75%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .red-accent-text {
+    color: hsl(var(--crimson));
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(220 15% 14%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--crimson) / 0.5);
+  border-radius: 3px;
+}
+
+@keyframes pulse-red {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px hsl(var(--crimson) / 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 25px hsl(var(--crimson) / 0.7), 0 0 50px hsl(var(--crimson) / 0.2);
+  }
+}
+
+.animate-pulse-red {
+  animation: pulse-red 2.5s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.animate-scan {
+  animation: scan 10s linear infinite;
+}
+
+@keyframes drift {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+}
+
+.animate-drift {
+  animation: drift 6s ease-in-out infinite;
+}
+
+@keyframes counter-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
